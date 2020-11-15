@@ -31,7 +31,6 @@
 	<style>
 	    @font-face {
             font-family: 'Chomsky';
-            src: url('../fonts/Chomsky.otf'); /* IE9 Compat Modes */
             src: url('../fonts/Chomsky.otf')  format('opentype'), /* Safari, Android, iOS */
 		}
 
@@ -102,6 +101,10 @@
             justify-content: space-between;
             position: absolute;
             top: 86%;
+        }
+        
+        .fancy {
+            font-family: 'Chomsky';
         }
         
         .flex-end {
@@ -396,6 +399,10 @@
             color: #ffffff;
         }
         
+        .what-can-you-do-box:hover .link-icon path {
+            fill: #ffffff;
+        }
+        
         .what-can-you-do-interior-box {
             width: 100%;
             text-align: left;
@@ -419,11 +426,10 @@
         .off-the-bottom {
             margin-bottom: -5px;
         }
-                
-    	@media only screen and (max-width: 1080px) {
-        }
-    	@media only screen and (max-width: 1000px) {
-        }
+
+        .gray {
+            color: #5F5C5C;    
+        }                
 	</style>
 	<body>
 
@@ -440,7 +446,7 @@
                   <svg class="flex-end arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
               </a>
               
-              <p class="made-by">Made by <strong>Outer <span class="fancy">Outer</span> Space</strong></p>
+              <p class="made-by">Made by <a class="hero-headline-link gray" href="../"><strong>Outer <span class="fancy">Outer</span> Space</strong></a></p>
           </footer>
         </section>
         
@@ -629,20 +635,26 @@ There are five registered variable font axes in the OpenType Design-Variation Ax
         
         <section class="what-can-you-do">
             <header class="what-can-you-do-header">
-                <h1 class="body-headline body-width"><a name="what-can-be-done"></a><span class="change">W</span>here to fin<span class="change">d</span> variabl<span class="change">e</span> font<span class="change">s</span></h1>
+                <h1 class="body-headline body-width"><a name="finding-fonts"></a><span class="change">W</span>here can you fin<span class="change">d</span> variabl<span class="change">e</span> font<span class="change">s</span>?</h1>
             </header>
             
             <div class="what-can-you-do-interior">
                 <a class="what-can-you-do-box" href="https://fonts.google.com/?vfonly=true" target="_blank">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">Google Fonts</h3>
+                        <h3 class="what-can-you-do-subsubheadline">
+                            Google Fonts
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">A great resource for free fonts you can load on your website using Google Fonts' API.</p>                   
                     </div>
                 </a>
  
                 <a class="what-can-you-do-box" href="https://v-fonts.com/" target="_blank">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">V-Fonts.com</h3>
+                        <h3 class="what-can-you-do-subsubheadline">
+                            V-Fonts.com
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">This directory lists both free and paid fonts, and makes it easy to test custom text.</p>                   
                     </div>
                 </a>
@@ -651,14 +663,19 @@ There are five registered variable font axes in the OpenType Design-Variation Ax
             <div class="what-can-you-do-interior">
                 <a class="what-can-you-do-box" href="https://www.futurefonts.xyz/">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">Future Fonts</h3>
+                        <h3 class="what-can-you-do-subsubheadline">
+                            Future Fonts
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">This unique website provides free and paid options for fonts that are works-in-progress.</p>                   
                     </div>
                 </a>
                 
                 <a class="what-can-you-do-box" href="https://fontesk.com/tag/variable/" target="_blank">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">Fontesk</h3>
+                        <h3 class="what-can-you-do-subsubheadline">Fontesk
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">A great resource for free fonts for both commercial and personal use.</p>                   
                     </div>
                 </a>
@@ -667,14 +684,20 @@ There are five registered variable font axes in the OpenType Design-Variation Ax
             <div class="what-can-you-do-interior">
                 <a class="what-can-you-do-box" href="https://fontsarena.com/tag/variable-font/">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">Fonts Arena</h3>
+                        <h3 class="what-can-you-do-subsubheadline">
+                            Fonts Arena
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">A diverse collection of 17 variable fonts that are free for personal and commercial use.</p>                   
                     </div>
                 </a>
                 
                 <a class="what-can-you-do-box" href="https://www.fontspace.com/category/variable" target="_blank">
                     <div class="what-can-you-do-interior-box">
-                        <h3 class="what-can-you-do-subsubheadline">FontSpace</h3>
+                        <h3 class="what-can-you-do-subsubheadline">
+                            FontSpace
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
                         <p class="body-copy less-off-the-top off-the-bottom">A collection of 15 variable fonts that are available free of charge for personal use.</p>                   
                     </div>
                 </a>
@@ -684,11 +707,61 @@ There are five registered variable font axes in the OpenType Design-Variation Ax
 
         <section class="what-can-you-do">
             <header class="what-can-you-do-header">
+                <h1 class="body-headline body-width"><a name="learning-resources"></a><span class="change">H</span>ow can you lear<span class="change">n</span> mor<span class="change">e</span> abou<span class="change">t</span> variable font<span class="change">s</span>?</h1>
+            </header>
+            
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline off-the-bottom">
+                            MDN Variable Fonts Guide
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
+                    </div>
+                </a>
+ 
+                <a class="what-can-you-do-box" href="https://caniuse.com/variable-fonts" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline off-the-bottom">
+                            Can I Use | Variable Font Browser Support
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                            </h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg#registered-axis-tags" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline off-the-bottom">
+                            OpenType Design-Variation Axis Tag Registry
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
+                    </div>
+                </a>
+                
+                <a class="what-can-you-do-box" href="https://web.dev/variable-fonts/" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline off-the-bottom">
+                            Introduction to variable fonts on the web
+                            <svg class="link-icon" width="14" height="14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.826.95c-1.428-1.326-3.74-1.255-5.152.157L5.833 2.948a3.673 3.673 0 00-.52.655.789.789 0 00-.12.408.21.21 0 00.217.211c.284-.01.575.01.863.06a.763.763 0 00.663-.22l.006-.005 1.902-1.902a2.108 2.108 0 013.11.15c.682.825.6 2.087-.185 2.873L9.916 7.031a2.11 2.11 0 01-2.545.33c-.034-.017-.066-.038-.098-.059a.78.78 0 00-.983.086l-.023.023a.772.772 0 00.12 1.185 3.667 3.667 0 002.809.538 3.651 3.651 0 001.829-.994l1.902-1.902A3.64 3.64 0 0014 3.575 3.643 3.643 0 0012.826.95z" fill="#007E86"/><path d="M8.572 9.753a4.091 4.091 0 01-.87-.06.757.757 0 00-.671.223l-1.902 1.902c-.416.416-.993.64-1.584.612a2.086 2.086 0 01-1.526-.763c-.682-.825-.601-2.086.185-2.872l1.853-1.853a2.111 2.111 0 012.645-.27c.246.163.557.18.813.04a.772.772 0 00.168-.127l.023-.023a.772.772 0 00-.12-1.185 3.673 3.673 0 00-2.263-.611 3.665 3.665 0 00-2.375 1.066L1.107 7.674C-.306 9.086-.376 11.397.951 12.826A3.643 3.643 0 003.646 14c.98 0 1.898-.38 2.592-1.073l1.902-1.902c.202-.202.38-.428.532-.673v-.001a.787.787 0 00.116-.383.21.21 0 00-.216-.215z" fill="#007E86"/></svg>
+                        </h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+
+        <section class="what-can-you-do">
+            <header class="what-can-you-do-header">
                 <h1 class="body-headline body-width"><a name="what-can-be-done"></a><span class="change">A</span>bout this <span class="change">p</span>roject</h1>
             </header>
             
             <p class="body-copy body-copy-width">I presented this project on November 14, 2020 as a keynote talk for <a class="hero-headline-link" href="https://indieweb.org/2020/East" target="_blank"><strong>IndieWebCamp East 2020</strong></a>. This project features three variable typefaces: <a class="hero-headline-link" href="https://www.futurefonts.xyz/cstm/cstm-xprmntl-03" target="_blank"><strong>CSTM Xprmnt l03</strong></a> a paid font by CSTM Fonts, <a class="hero-headline-link" href="https://fonts.google.com/specimen/Space+Grotesk?vfonly=true" target="_blank"><strong>Space Grotesk</strong></a> a free font by Florian Karsten, and <a class="hero-headline-link" href="https://fonts.google.com/specimen/Work+Sans?vfonly=true" target="_blank"><strong>Work Sans</strong></a> a free font by Wei Huang. </p>
         </section>
+
+
+        <p class="made-by center spacer">Made by <a class="hero-headline-link gray" href="../"><strong>Outer <span class="fancy">Outer</span> Space</strong></a></p>
 
 
 	</body>
