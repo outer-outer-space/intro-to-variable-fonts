@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<!-- Global site tag (gtag.js) - Google Analytics-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155724944-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-155724944-1');
+	</script> 
+    <meta charset="utf-8">
+    <title>Registered Font Axes | An Intro to Variable Fonts -(outer outer space)-</title>
+	<meta name="description" content="A short exploration of variable fonts, what they are, and what you can do with them. This was a keynote presentation for IndieWebCamp East 2020.">
+	<meta name="author" content="Outer Outer Space">
+	<meta property="og:title" content="Intro to Variable Fonts">
+    <meta property="og:description" content="This is my keynote presentation on variable fonts for IndieWebCamp East 2020.">
+    <meta property="og:image" content="http://outer-outer.space/intro-to-variable-fonts/img/intro-to-variable-fonts-card.png">
+    <meta property="og:url" content="http://outer-outer.space/an-intro-to-variable-fonts/">
+    <meta name="twitter:title" content="Intro to Variable Fonts">
+    <meta name="twitter:description" content="This is my keynote on variable fonts for IndieWebCamp East 2020.">
+    <meta name="twitter:image" content="http://outer-outer.space/intro-to-variable-fonts/img/intro-to-variable-fonts-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+	</head>
+	<style>
+	    @font-face {
+            font-family: 'Chomsky';
+            src: url('../../fonts/Chomsky.otf'); /* IE9 Compat Modes */
+            src: url('../fonts/Chomsky.otf')  format('opentype'), /* Safari, Android, iOS */
+		}
+
+	    @font-face {
+            font-family: 'CSTM Xprmnt l03';
+            src: url('../../fonts/CSTMXprmntl03-VF.ttf')  format('truetype'); /* Safari, Android, iOS */
+            font-weight: 1 999;
+		}        
+
+	    @font-face {
+            font-family: 'Space Grotesk';
+            src: url('../../fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype'); /* Safari, Android, iOS */
+            font-weight: 1 999;
+		}        
+
+		* {
+    		box-sizing: border-box;
+		}
+
+		body {
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            padding: 100px;
+            color: #007E86;
+            background-color: #F6EFDD;
+        }
+        
+        ol {
+            margin-left: -20px;
+        }
+        
+        .hero-container {
+            height: calc(100vh - 1px);
+        }
+
+        .hero-headline {
+            font-family: 'CSTM Xprmnt l03', cursive;
+            font-size: 6vw;
+            letter-spacing: -.01em; 
+            line-height: 110%;
+            font-weight: 100;
+            color: #E12A6C;
+            font-variation-settings: 'wght' 0;
+            max-width: 80%;
+        }
+        
+        .hero-headline-link {
+            color: #007E86;
+            font-weight: 400;
+            text-decoration: none;
+            background-image: linear-gradient(#F6EFDD 89%, #D1C5A4 3%);
+        }
+
+        .hero-headline-link:hover {
+            color: #EB6504;
+            background-image: linear-gradient(#F6EFDD 83%, #EB6504 10%);
+        }
+
+        .hero-subheadline {
+            color: #007E86;
+            font-size: 1.7vw;
+            font-weight: 400;
+        }
+        
+        .hero-footer {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 86%;
+        }
+        
+        .flex-end {
+            align-self: flex-end; 
+        }
+        
+        .made-by {
+            color: #5F5C5C;
+            align-self: flex-end;
+            font-size: 1.1vw;
+        }
+        
+        .change {
+            /*--delay: calc((var(--char-index) + 1) * 1000ms);*/
+            animation: change 20000ms infinite;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes change {
+            50% {
+                font-variation-settings: 'wght' 950;
+            }
+        
+            100% {
+                font-variation-settings: 'wght' 0;
+            }
+        }
+
+        .body-headline {
+            font-family: 'CSTM Xprmnt l03', cursive;
+            font-size: 5.7vw;
+            letter-spacing: -.01em; 
+            line-height: 90%;
+            font-weight: 100;
+            color: #E12A6C;
+            font-variation-settings: 'wght' 0;
+            max-width: 80%;
+        }
+
+        .body-subheadline {
+            color: #EB6504;
+            font-size: 1.8vw;
+            line-height: 1.2;
+            font-weight: 400;
+            max-width: 850px;
+        }
+
+        .body-subsubheadline {
+            font-size: 1.6vw;
+            letter-spacing: -.01em; 
+            line-height: 105%;
+            font-weight: 600;
+            color: #007E86;
+            margin-bottom: 35px;
+        }
+
+        .subsubheadline-adjust {
+            margin-bottom: 10px;
+        }
+
+        .body-width {
+            max-width: 70%;
+        }
+        
+        .body-copy {
+            font-size: 1.2vw;
+            line-height: 1.3;
+            letter-spacing: .01em;
+            margin-bottom: 20px;
+        }
+        
+        .body-copy-width {
+            max-width: 70%;
+        }
+
+        .body-rule {
+            border-top: 1px solid #007E86;
+            border-bottom: 0px;
+            margin-top: 20px;
+        }
+        
+        .center-rule {
+            display: block;
+            margin: -8px auto 0px auto;
+        }
+
+        .pink {
+            color: #E12A6C;
+        }
+
+        .what-is-comparison {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .font-weight-box-one {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .font-weight-box-two {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .body-callout-box {
+            border: 1px solid #007E86;
+            width: 50%;
+            padding: 25px;
+        }
+
+        .body-callout-box:first-child {
+            margin-right: 40px;
+        }
+        
+        .full-width-body-callout-box {
+            border: 1px solid #007E86;
+            width: 100%;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+                
+        .caption {
+            font-size: .9vw;
+            line-height: 1.1;
+            color: #E12A6C;
+        }
+        
+        .work-thin {
+            font-weight: 100;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .work-light {
+            font-weight: 300;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .work-medium {
+            font-weight: 500;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .work-bold {
+            font-weight: 700;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .work-heavy {
+            font-weight: 900;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .cstm-cyrillic {
+            font-weight: 0;
+            font-variation-settings: 'wght' 0;
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+
+        .cstm-medium {
+            font-weight: 450;
+            font-variation-settings: 'wght' 450;            
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+        .cstm-blackletter {
+            font-weight: 950;
+            font-variation-settings: 'wght' 950;
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+        
+        .off-the-top {
+            margin-bottom: -10px;
+        }
+
+        .img-box {
+            width: 33.3%;
+        }
+
+        .full-img-box {
+            width: 100%;
+        }
+        
+        .spacer {
+            padding: 175px 0 55px 0;
+        }
+        
+        .registered-variants {
+            margin-top: 100px;
+        }
+        
+        .arrow {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .registered-variant-list {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .registered-variant-list-item {
+            display: inline;
+        }
+        
+        .font-specimen {
+            font-size: 170px;
+            margin: -45px 0;
+        }
+        
+        .what-can-you-do {
+            margin-top: 200px;
+            width: 100%;
+        }
+        
+        .embedded-examples {
+            width: 100%;
+            margin: 0 auto;
+            /*display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 15px;*/
+        }
+        
+        .embed-container {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .embed-heading-spacer {
+            margin: 60px 0 30px 0;
+        }
+        
+        .arrow-hover path:hover {
+          fill: #EB6504;
+        }
+        
+        .what-can-you-do-interior {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .what-can-you-do-box {
+            width: 100%;
+            text-decoration: none;
+            text-align: left;
+            color: #007E86;
+            margin-bottom: 30px;
+        }
+        
+        .what-can-you-do-box:first-child {
+            margin-right: 30px;
+        }
+        
+        .what-can-you-do-subsubheadline {
+            color: #007E86;
+            font-size: 1.7vw;
+            letter-spacing: -.01em; 
+            line-height: 105%;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .what-can-you-do-box:hover {
+            background: #007E86;
+            color: #ffffff !important;
+        }
+        
+        .what-can-you-do-box:hover .what-can-you-do-subsubheadline {
+            color: #ffffff;
+        }
+        
+        .what-can-you-do-interior-box {
+            width: 100%;
+            text-align: left;
+            border: 1px solid #007E86;
+            padding: 25px;
+        }
+
+
+        .what-can-you-do-header {
+            margin-bottom: 50px;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .less-off-the-top {
+            margin-top: -25px;
+        }
+        
+        .back-link {
+            font-size: .9em;
+            color: #007E86;
+            text-decoration: none;
+            background-image: linear-gradient(#F6EFDD 89%, #D1C5A4 3%);
+        }
+
+        .back-link:hover {
+            color: #EB6504;
+            background-image: linear-gradient(#F6EFDD 83%, #EB6504 10%);
+        }
+                
+    	@media only screen and (max-width: 1080px) {
+        }
+    	@media only screen and (max-width: 1000px) {
+        }
+	</style>
+	<body>
+
+        <section class="hero-container">
+            <a class="back-link" href="../#what-can-be-done">Back to main project</a>
+            <h1 class="hero-headline"><span class="change">E</span>xamples <span class="change">o</span>f Registere<span class="change">d</span> Axis Font <span class="change">T</span>ransition<span class="change">s</span></h1>
+            <h2 class="hero-subheadline">Presented at <a class="hero-headline-link" href="https://2020.indieweb.org/east" target="_blank">IndieWebCamp East 2020</a></h2>
+          
+            <footer class="hero-footer">
+                <svg class="flex-end" width="130" height="53" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.438 1.536l18.257 38.993 5.76-12.302L52.009 1.536H40.438zM92.694 1.536H56.228l11.999 25.733 6.209 13.26L92.694 1.536zM36.419 1.536H0V11.73h36.419V1.536zM36.419 15.448H0v22.183h36.419V15.448zM129.838 21.603c-.942 10.018-9.374 17.858-19.635 17.858-10.892 0-19.72-8.834-19.72-19.73C90.483 8.834 99.311 0 110.203 0c10.233 0 18.647 7.799 19.627 17.78h-19.618a1.911 1.911 0 100 3.824h19.626v-.001zM1.457 45.199H.142v7.483h1.315v-7.483zM8.053 45.135l4.725 4.629v-4.565h1.315v7.516l-.075.033-4.725-4.598v4.532H7.978v-7.515l.075-.032zM19.758 52.682v-7.483h2.619c2.854 0 3.699 2.171 3.699 3.73 0 1.604-.845 3.753-3.699 3.753h-2.619zm2.618-1.176c2.063 0 2.373-1.914 2.373-2.577 0-.651-.31-2.564-2.373-2.564H21.05v5.142h1.326v-.001zM33.054 45.199h-1.315v7.483h1.315v-7.483zM40.665 49.582v1.924h3.7v1.176h-5.003v-7.483h5.003v1.176h-3.7v2.032h2.897v1.175h-2.897zM55.287 48.096l-2.061 4.652h-.097L49.707 45.2h1.454l2.021 4.757 2.053-4.896h.107l2.063 4.896 2.02-4.757h1.455l-3.422 7.55h-.096l-2.075-4.653zM66.672 49.582v1.924h3.698v1.176h-5.003v-7.483h5.003v1.176h-3.698v2.032h2.897v1.175h-2.897zM80.985 48.929c.608.257.919.995.919 1.583 0 .898-.62 2.17-2.64 2.17h-2.801v-7.483h2.801c2.02 0 2.64 1.272 2.64 2.181 0 .609-.311 1.293-.919 1.549zm-1.572-.533c.982-.032 1.155-.716 1.155-1.017 0-.245-.173-1.015-1.197-1.015h-1.615v2.031h1.657v.001zm-.042 3.11c1.024 0 1.197-.748 1.197-.994 0-.342-.173-.898-1.155-.93h-1.657v1.924h1.615zM93.246 47.23c-.396-.492-1.198-.94-1.968-.94-2.085 0-2.384 1.988-2.384 2.64 0 .653.299 2.642 2.384 2.642.79 0 1.581-.471 2.062-.93l.76.95c-.729.729-1.615 1.188-2.822 1.188-2.866 0-3.709-2.245-3.709-3.85 0-1.56.854-3.838 3.709-3.838 1.293 0 2.138.515 2.844 1.305l-.876.833zM104.906 52.682h-1.452l-.791-1.914h-2.449l-.791 1.914h-1.454l3.421-7.547h.098l3.418 7.547zm-4.244-3.003h1.55l-.77-1.872-.78 1.872zM113.01 52.779l-2.171-4.426-1.432 4.329h-1.4l2.651-7.579h.095l2.31 5.099 2.308-5.099h.097l2.65 7.579h-1.399l-1.433-4.329-2.169 4.426h-.107zM124.136 52.682h-1.314v-7.483h2.822c2.021 0 2.64 1.411 2.64 2.385 0 1.453-1.282 2.416-2.49 2.416h-1.657v2.682h-.001zm1.603-3.88c.995-.033 1.231-.823 1.231-1.219 0-.418-.226-1.219-1.273-1.219h-1.561v2.438h1.603z" fill="#EB6504"/></svg>
+              
+                <a class="flex-end" href="#examples">
+                    <svg class="flex-end arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
+                </a>
+              
+              <p class="made-by">Made by <strong>Outer <span class="fancy">Outer</span> Space</strong></p>
+          </footer>
+        </section>
+        
+        <section class="what-is">  
+            <a name="examples"></a>                       
+            <div class="embedded-examples">
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="cassie-codes" data-slug-hash="xxbMKpr" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Bricks">
+<span>See the Pen <a href="https://codepen.io/cassie-codes/pen/xxbMKpr">
+Bricks</a> by Cassie Evans (<a href="https://codepen.io/cassie-codes">@cassie-codes</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="typeler" data-slug-hash="REYPPy" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable Font CSS Animation">
+<span>See the Pen <a href="https://codepen.io/typeler/pen/REYPPy">
+Variable Font CSS Animation</a> by Tyler (<a href="https://codepen.io/typeler">@typeler</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="tjFogarty" data-slug-hash="WMQOwj" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable Font">
+<span>See the Pen <a href="https://codepen.io/tjFogarty/pen/WMQOwj">
+Variable Font</a> by T.J. Fogarty (<a href="https://codepen.io/tjFogarty">@tjFogarty</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+                
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="srwild" data-slug-hash="rNNMJKE" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable Chunklet">
+<span>See the Pen <a href="https://codepen.io/srwild/pen/rNNMJKE">
+Variable Chunklet</a> by S.R. Wild (<a href="https://codepen.io/srwild">@srwild</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="fridanyvall" data-slug-hash="ZmKdqJ" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable font demo">
+<span>See the Pen <a href="https://codepen.io/fridanyvall/pen/ZmKdqJ">
+Variable font demo</a> by Frida Nyvall (<a href="https://codepen.io/fridanyvall">@fridanyvall</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="irene_mallafre" data-slug-hash="LYVqpox" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable font animation">
+<span>See the Pen <a href="https://codepen.io/irene_mallafre/pen/LYVqpox">
+Variable font animation</a> by irene (<a href="https://codepen.io/irene_mallafre">@irene_mallafre</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="petebarr" data-slug-hash="oNvRwJm" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="GSAP 3 &amp;amp; ETC Variable Font Caterpillar">
+<span>See the Pen <a href="https://codepen.io/petebarr/pen/oNvRwJm">
+GSAP 3 &amp; ETC Variable Font Caterpillar</a> by Pete Barr (<a href="https://codepen.io/petebarr">@petebarr</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="remid" data-slug-hash="VwwOqMz" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="gsap variable font">
+<span>See the Pen <a href="https://codepen.io/remid/pen/VwwOqMz">
+gsap variable font</a> by Rémi Denimal (<a href="https://codepen.io/remid">@remid</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="PACMA" data-slug-hash="wvMRJzX" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="variable fonts Animation - Hello WORLD">
+<span>See the Pen <a href="https://codepen.io/PACMA/pen/wvMRJzX">
+variable fonts Animation - Hello WORLD</a> by basma (<a href="https://codepen.io/PACMA">@PACMA</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="ReneDrie" data-slug-hash="ZEEwKmP" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable font Morph">
+<span>See the Pen <a href="https://codepen.io/ReneDrie/pen/ZEEwKmP">
+Variable font Morph</a> by Rene (<a href="https://codepen.io/ReneDrie">@ReneDrie</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="martinhj" data-slug-hash="Xormbb" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable font css keyframe animations">
+<span>See the Pen <a href="https://codepen.io/martinhj/pen/Xormbb">
+Variable font css keyframe animations</a> by Martin Holt Juliussen (<a href="https://codepen.io/martinhj">@martinhj</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="jack-plantz" data-slug-hash="vYGbYRe" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Interactive Web Typography">
+<span>See the Pen <a href="https://codepen.io/jack-plantz/pen/vYGbYRe">
+Interactive Web Typography</a> by Jack Plantz (<a href="https://codepen.io/jack-plantz">@jack-plantz</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+                
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="gayane-gasparyan" data-slug-hash="abZpwbZ" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Poster with Variable Font (not finished)">
+<span>See the Pen <a href="https://codepen.io/gayane-gasparyan/pen/abZpwbZ">
+Poster with Variable Font (not finished)</a> by Gayane (<a href="https://codepen.io/gayane-gasparyan">@gayane-gasparyan</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>                        
+                </div>
+                
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="petebarr" data-slug-hash="dyyLEwB" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Hello from Dublin!!">
+<span>See the Pen <a href="https://codepen.io/petebarr/pen/dyyLEwB">
+Hello from Dublin!!</a> by Pete Barr (<a href="https://codepen.io/petebarr">@petebarr</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>                        
+                </div>
+                
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="electricgarden" data-slug-hash="BaabNem" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable Font Fun">
+<span>See the Pen <a href="https://codepen.io/electricgarden/pen/BaabNem">
+Variable Font Fun</a> by Tyler Durrett (<a href="https://codepen.io/electricgarden">@electricgarden</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>                        
+                </div>
+
+                <div class="embed-container">
+<p class="codepen" data-height="465" data-theme-id="dark" data-default-tab="result" data-user="joshuajcollinsworth" data-slug-hash="ZEGrMRQ" data-preview="true" style="height: 465px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Variable Font Generative Letter Grid">
+<span>See the Pen <a href="https://codepen.io/joshuajcollinsworth/pen/ZEGrMRQ">
+Variable Font Generative Letter Grid</a> by Josh Collinsworth (<a href="https://codepen.io/joshuajcollinsworth">@joshuajcollinsworth</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+                </div>
+            </div>
+
+
+        </section>
+
+        <br />
+        <br />
+        <a class="back-link" href="../#what-can-be-done">Back to main project</a>
+
+	</body>
+</html>

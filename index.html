@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<!-- Global site tag (gtag.js) - Google Analytics-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155724944-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-155724944-1');
+	</script> 
+    <meta charset="utf-8">
+    <title>An Intro to Variable Fonts -(outer outer space)-</title>
+	<meta name="description" content="A short exploration of variable fonts, what they are, and what you can do with them. This was a keynote presentation for IndieWebCamp East 2020.">
+	<meta name="author" content="Outer Outer Space">
+	<meta property="og:title" content="Intro to Variable Fonts">
+    <meta property="og:description" content="This is my keynote presentation on variable fonts for IndieWebCamp East 2020.">
+    <meta property="og:image" content="http://outer-outer.space/intro-to-variable-fonts/img/intro-to-variable-fonts-card.png">
+    <meta property="og:url" content="http://outer-outer.space/an-intro-to-variable-fonts/">
+    <meta name="twitter:title" content="Intro to Variable Fonts">
+    <meta name="twitter:description" content="This is my keynote on variable fonts for IndieWebCamp East 2020.">
+    <meta name="twitter:image" content="http://outer-outer.space/intro-to-variable-fonts/img/intro-to-variable-fonts-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+	</head>
+	<style>
+	    @font-face {
+            font-family: 'Chomsky';
+            src: url('../fonts/Chomsky.otf'); /* IE9 Compat Modes */
+            src: url('../fonts/Chomsky.otf')  format('opentype'), /* Safari, Android, iOS */
+		}
+
+	    @font-face {
+            font-family: 'CSTM Xprmnt l03';
+            src: url('../fonts/CSTMXprmntl03-VF.ttf')  format('truetype'); /* Safari, Android, iOS */
+            font-weight: 1 999;
+		}        
+
+	    @font-face {
+            font-family: 'Space Grotesk';
+            src: url('../fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype'); /* Safari, Android, iOS */
+            font-weight: 1 999;
+		}        
+
+		* {
+    		box-sizing: border-box;
+		}
+
+		body {
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            padding: 100px;
+            color: #007E86;
+            background-color: #F6EFDD;
+        }
+        
+        ol {
+            margin-left: -20px;
+        }
+        
+        .hero-container {
+            height: calc(100vh - 1px);
+        }
+
+        .hero-headline {
+            font-family: 'CSTM Xprmnt l03', cursive;
+            font-size: 10vw;
+            letter-spacing: -.01em; 
+            line-height: 90%;
+            font-weight: 100;
+            color: #E12A6C;
+            font-variation-settings: 'wght' 0;
+            max-width: 80%;
+        }
+        
+        .hero-headline-link {
+            color: #007E86;
+            font-weight: 400;
+            text-decoration: none;
+            background-image: linear-gradient(#F6EFDD 89%, #D1C5A4 3%);
+        }
+
+        .hero-headline-link:hover {
+            color: #EB6504;
+            background-image: linear-gradient(#F6EFDD 83%, #EB6504 10%);
+        }
+
+        .hero-subheadline {
+            color: #007E86;
+            font-size: 1.7vw;
+            font-weight: 400;
+        }
+        
+        .hero-footer {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 86%;
+        }
+        
+        .flex-end {
+            align-self: flex-end; 
+        }
+        
+        .made-by {
+            color: #5F5C5C;
+            align-self: flex-end;
+            font-size: 1.1vw;
+        }
+        
+        .change {
+            /*--delay: calc((var(--char-index) + 1) * 1000ms);*/
+            animation: change 20000ms infinite;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes change {
+            50% {
+                font-variation-settings: 'wght' 950;
+            }
+        
+            100% {
+                font-variation-settings: 'wght' 0;
+            }
+        }
+
+        .body-headline {
+            font-family: 'CSTM Xprmnt l03', cursive;
+            font-size: 5.7vw;
+            letter-spacing: -.01em; 
+            line-height: 90%;
+            font-weight: 100;
+            color: #E12A6C;
+            font-variation-settings: 'wght' 0;
+            max-width: 80%;
+        }
+
+        .body-subheadline {
+            color: #EB6504;
+            font-size: 1.8vw;
+            line-height: 1.2;
+            font-weight: 400;
+            max-width: 850px;
+        }
+
+        .body-subsubheadline {
+            font-size: 1.6vw;
+            letter-spacing: -.01em; 
+            line-height: 105%;
+            font-weight: 600;
+            color: #007E86;
+            margin-bottom: 35px;
+        }
+
+        .subsubheadline-adjust {
+            margin-bottom: 10px;
+        }
+
+        .body-width {
+            max-width: 70%;
+        }
+        
+        .body-copy {
+            font-size: 1.2vw;
+            line-height: 1.4;
+            letter-spacing: .01em;
+            margin-bottom: 20px;
+        }
+        
+        .body-copy-width {
+            max-width: 70%;
+        }
+
+        .body-rule {
+            border-top: 1px solid #007E86;
+            border-bottom: 0px;
+            margin-top: 20px;
+        }
+        
+        .center-rule {
+            display: block;
+            margin: -8px auto 0px auto;
+        }
+
+        .pink {
+            color: #E12A6C;
+        }
+
+        .what-is {
+            margin-top: 80px;
+        }
+        
+        .what-is-comparison {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .font-weight-box-one {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .font-weight-box-two {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .body-callout-box {
+            border: 1px solid #007E86;
+            width: 50%;
+            padding: 25px;
+        }
+
+        .body-callout-box:first-child {
+            margin-right: 40px;
+        }
+        
+        .full-width-body-callout-box {
+            border: 1px solid #007E86;
+            width: 100%;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+                
+        .caption {
+            font-size: .9vw;
+            line-height: 1.1;
+            color: #E12A6C;
+        }
+        
+        .work-thin {
+            font-weight: 100;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .work-light {
+            font-weight: 300;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .work-medium {
+            font-weight: 500;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .work-bold {
+            font-weight: 700;
+            font-family: 'Work Sans', sans-serif;
+        }
+        
+        .work-heavy {
+            font-weight: 900;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .cstm-cyrillic {
+            font-weight: 0;
+            font-variation-settings: 'wght' 0;
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+
+        .cstm-medium {
+            font-weight: 450;
+            font-variation-settings: 'wght' 450;            
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+        .cstm-blackletter {
+            font-weight: 950;
+            font-variation-settings: 'wght' 950;
+            font-family: 'CSTM Xprmnt l03', cursive;
+        }
+        
+        .off-the-top {
+            margin-bottom: -10px;
+        }
+
+        .img-box {
+            width: 33.3%;
+        }
+
+        .full-img-box {
+            width: 100%;
+        }
+        
+        .spacer {
+            padding: 175px 0 55px 0;
+        }
+        
+        .registered-variants {
+            margin-top: 100px;
+        }
+        
+        .arrow {
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .registered-variant-list {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .registered-variant-list-item {
+            display: inline;
+        }
+        
+        .font-specimen {
+            font-size: 170px;
+            margin: -45px 0;
+        }
+        
+        .what-can-you-do {
+            margin-top: 200px;
+            width: 100%;
+        }
+        
+        .embedded-examples {
+            width: 100%;
+            margin: 0 auto;
+            /*display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px 15px;*/
+        }
+        
+        .embed-container {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .embed-heading-spacer {
+            margin: 60px 0 30px 0;
+        }
+        
+        .arrow-hover path:hover {
+          fill: #EB6504;
+        }
+        
+        .what-can-you-do-interior {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .what-can-you-do-box {
+            width: 100%;
+            text-decoration: none;
+            text-align: left;
+            color: #007E86;
+            margin-bottom: 30px;
+        }
+
+        .what-can-you-do-box-alt .body-copy {
+            width: 100%;
+            text-decoration: none;
+            text-align: left;
+            color: #007E86;
+            margin-bottom: 30px;
+        }
+
+        
+        .what-can-you-do-box:first-child {
+            margin-right: 30px;
+        }
+        
+        .what-can-you-do-subsubheadline {
+            color: #007E86;
+            font-size: 1.7vw;
+            letter-spacing: -.01em; 
+            line-height: 105%;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .what-can-you-do-box:hover {
+            background: #007E86;
+            color: #ffffff !important;
+        }
+        
+        .what-can-you-do-box:hover .what-can-you-do-subsubheadline {
+            color: #ffffff;
+        }
+        
+        .what-can-you-do-interior-box {
+            width: 100%;
+            text-align: left;
+            border: 1px solid #007E86;
+            padding: 25px;
+        }
+
+
+        .what-can-you-do-header {
+            margin-bottom: 50px;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .less-off-the-top {
+            margin-top: -25px;
+        }
+        
+        .off-the-bottom {
+            margin-bottom: -5px;
+        }
+                
+    	@media only screen and (max-width: 1080px) {
+        }
+    	@media only screen and (max-width: 1000px) {
+        }
+	</style>
+	<body>
+
+        <section class="hero-container">
+          <h1 class="hero-headline"><span class="change">A</span>n In<span class="change">t</span>ro t<span class="change">o</span> V<span class="change">a</span>ria<span class="change">b</span>le <span class="change">F</span>onts</h1>
+
+
+          <h2 class="hero-subheadline">Presented at <a class="hero-headline-link" href="https://2020.indieweb.org/east" target="_blank">IndieWebCamp East 2020</a></h2>
+          
+          <footer class="hero-footer">
+              <svg class="flex-end" width="130" height="53" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.438 1.536l18.257 38.993 5.76-12.302L52.009 1.536H40.438zM92.694 1.536H56.228l11.999 25.733 6.209 13.26L92.694 1.536zM36.419 1.536H0V11.73h36.419V1.536zM36.419 15.448H0v22.183h36.419V15.448zM129.838 21.603c-.942 10.018-9.374 17.858-19.635 17.858-10.892 0-19.72-8.834-19.72-19.73C90.483 8.834 99.311 0 110.203 0c10.233 0 18.647 7.799 19.627 17.78h-19.618a1.911 1.911 0 100 3.824h19.626v-.001zM1.457 45.199H.142v7.483h1.315v-7.483zM8.053 45.135l4.725 4.629v-4.565h1.315v7.516l-.075.033-4.725-4.598v4.532H7.978v-7.515l.075-.032zM19.758 52.682v-7.483h2.619c2.854 0 3.699 2.171 3.699 3.73 0 1.604-.845 3.753-3.699 3.753h-2.619zm2.618-1.176c2.063 0 2.373-1.914 2.373-2.577 0-.651-.31-2.564-2.373-2.564H21.05v5.142h1.326v-.001zM33.054 45.199h-1.315v7.483h1.315v-7.483zM40.665 49.582v1.924h3.7v1.176h-5.003v-7.483h5.003v1.176h-3.7v2.032h2.897v1.175h-2.897zM55.287 48.096l-2.061 4.652h-.097L49.707 45.2h1.454l2.021 4.757 2.053-4.896h.107l2.063 4.896 2.02-4.757h1.455l-3.422 7.55h-.096l-2.075-4.653zM66.672 49.582v1.924h3.698v1.176h-5.003v-7.483h5.003v1.176h-3.698v2.032h2.897v1.175h-2.897zM80.985 48.929c.608.257.919.995.919 1.583 0 .898-.62 2.17-2.64 2.17h-2.801v-7.483h2.801c2.02 0 2.64 1.272 2.64 2.181 0 .609-.311 1.293-.919 1.549zm-1.572-.533c.982-.032 1.155-.716 1.155-1.017 0-.245-.173-1.015-1.197-1.015h-1.615v2.031h1.657v.001zm-.042 3.11c1.024 0 1.197-.748 1.197-.994 0-.342-.173-.898-1.155-.93h-1.657v1.924h1.615zM93.246 47.23c-.396-.492-1.198-.94-1.968-.94-2.085 0-2.384 1.988-2.384 2.64 0 .653.299 2.642 2.384 2.642.79 0 1.581-.471 2.062-.93l.76.95c-.729.729-1.615 1.188-2.822 1.188-2.866 0-3.709-2.245-3.709-3.85 0-1.56.854-3.838 3.709-3.838 1.293 0 2.138.515 2.844 1.305l-.876.833zM104.906 52.682h-1.452l-.791-1.914h-2.449l-.791 1.914h-1.454l3.421-7.547h.098l3.418 7.547zm-4.244-3.003h1.55l-.77-1.872-.78 1.872zM113.01 52.779l-2.171-4.426-1.432 4.329h-1.4l2.651-7.579h.095l2.31 5.099 2.308-5.099h.097l2.65 7.579h-1.399l-1.433-4.329-2.169 4.426h-.107zM124.136 52.682h-1.314v-7.483h2.822c2.021 0 2.64 1.411 2.64 2.385 0 1.453-1.282 2.416-2.49 2.416h-1.657v2.682h-.001zm1.603-3.88c.995-.033 1.231-.823 1.231-1.219 0-.418-.226-1.219-1.273-1.219h-1.561v2.438h1.603z" fill="#EB6504"/></svg>
+              
+              <a class="flex-end" href="#what-is-a-variable-font">
+                  <svg class="flex-end arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
+              </a>
+              
+              <p class="made-by">Made by <strong>Outer <span class="fancy">Outer</span> Space</strong></p>
+          </footer>
+        </section>
+        
+        <a name="what-is-a-variable-font"></a>
+        <section class="what-is">
+            <header>
+                <h1 class="body-headline"><span class="change">W</span>hat is <span class="change">a</span> variabl<span class="change">e</span> font<span class="change">?</span></h1>
+                <h2 class="body-subheadline">Variable fonts expand—yet paradoxically simplify—the use of performant, advanced web typography!</h2>
+            </header>
+            <section class="what-is-comparison">
+                <div class="body-callout-box">
+                    <h3 class="body-subsubheadline center">Standard Font</h3>
+                    <p class="body-copy">When using static font files on your websites, you individually load each font style that you plan to use. This means if the font you’re using has three style variants (e.g. different weights), then you’ll need to load those three font files in order to use them. If you use many font styles, this could have a performance impact.</p>
+                   
+                   <hr class="body-rule">
+                   <svg class="center-rule" width="1" height="55" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#007E86" stroke-linecap="round" stroke-linejoin="round" d="M.5 54.5V.5"/></svg>
+                   
+                   <div class="font-weight-box-one">
+                        <figure class="img-box">
+                            <svg width="39" height="51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.921 1.019L1.358 13.242v36.332h35.653V1.019H13.92z" fill="#F6EFDD"/><path d="M37.138 50.932H1.061A1.061 1.061 0 010 49.872V13.793c0-.282.112-.552.31-.751L13.043.31c.2-.198.469-.31.751-.31h23.344c.586 0 1.061.475 1.061 1.061v48.81c0 .586-.475 1.061-1.06 1.061zM2.122 48.81h33.955V2.122H14.234L2.121 14.233V48.81z" fill="#E12A6C"/><path d="M13.794 14.855H1.061a1.061 1.061 0 010-2.122h11.672V1.061a1.061 1.061 0 012.122 0v12.733c0 .586-.475 1.061-1.06 1.061zM30.772 19.1H7.428a1.062 1.062 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 12.733H20.16a1.061 1.061 0 010-2.122h10.61a1.062 1.062 0 010 2.122zM30.772 25.466H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122zM30.772 31.833H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 38.2H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.122zM30.772 44.566H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122z" fill="#E12A6C"/></svg>
+                            <figcaption>
+                                <p class="caption work-light">Work Sans <br/> Light Weight (300)</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="img-box">
+                            <svg width="39" height="51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.921 1.019L1.358 13.242v36.332h35.653V1.019H13.92z" fill="#F6EFDD"/><path d="M37.138 50.932H1.061A1.061 1.061 0 010 49.872V13.793c0-.282.112-.552.31-.751L13.043.31c.2-.198.469-.31.751-.31h23.344c.586 0 1.061.475 1.061 1.061v48.81c0 .586-.475 1.061-1.06 1.061zM2.122 48.81h33.955V2.122H14.234L2.121 14.233V48.81z" fill="#E12A6C"/><path d="M13.794 14.855H1.061a1.061 1.061 0 010-2.122h11.672V1.061a1.061 1.061 0 012.122 0v12.733c0 .586-.475 1.061-1.06 1.061zM30.772 19.1H7.428a1.062 1.062 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 12.733H20.16a1.061 1.061 0 010-2.122h10.61a1.062 1.062 0 010 2.122zM30.772 25.466H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122zM30.772 31.833H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 38.2H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.122zM30.772 44.566H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122z" fill="#E12A6C"/></svg>
+                            <figcaption>
+                                <p class="caption work-medium">Work Sans <br/> Medium Weight (500)</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="img-box">
+                            <svg width="39" height="51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.921 1.019L1.358 13.242v36.332h35.653V1.019H13.92z" fill="#F6EFDD"/><path d="M37.138 50.932H1.061A1.061 1.061 0 010 49.872V13.793c0-.282.112-.552.31-.751L13.043.31c.2-.198.469-.31.751-.31h23.344c.586 0 1.061.475 1.061 1.061v48.81c0 .586-.475 1.061-1.06 1.061zM2.122 48.81h33.955V2.122H14.234L2.121 14.233V48.81z" fill="#E12A6C"/><path d="M13.794 14.855H1.061a1.061 1.061 0 010-2.122h11.672V1.061a1.061 1.061 0 012.122 0v12.733c0 .586-.475 1.061-1.06 1.061zM30.772 19.1H7.428a1.062 1.062 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 12.733H20.16a1.061 1.061 0 010-2.122h10.61a1.062 1.062 0 010 2.122zM30.772 25.466H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122zM30.772 31.833H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 38.2H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.122zM30.772 44.566H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122z" fill="#E12A6C"/></svg>
+                            <figcaption>
+                                <p class="caption work-bold">Work Sans <br/>  Bold Weight (700)</p>
+                            </figcaption>
+                        </figure>
+                       <p>
+                   </div> 
+                </div>
+                <div class="body-callout-box">
+                    <h3 class="body-subsubheadline center">Variable Font (One Font File)</h3>
+                    <p class="body-copy">In contrast, when you use variable font files on your websites, you only need to load a single font file, regardless of the number of styles it contains. This means the font you’re using could have anywhere from 3 to 1000 font variants, and you still only need a single font file. This can improve performance in some use cases.</p>
+                   
+                   <hr class="body-rule">
+                   <svg class="center-rule" width="1" height="55" fill="none" xmlns="http://www.w3.org/2000/svg"><path stroke="#007E86" stroke-linecap="round" stroke-linejoin="round" d="M.5 54.5V.5"/></svg>
+                   
+                   <div class="font-weight-box-one">
+                        <figure class="full-img-box">
+                            <svg width="39" height="51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.921 1.019L1.358 13.242v36.332h35.653V1.019H13.92z" fill="#F6EFDD"/><path d="M37.138 50.932H1.061A1.061 1.061 0 010 49.872V13.793c0-.282.112-.552.31-.751L13.043.31c.2-.198.469-.31.751-.31h23.344c.586 0 1.061.475 1.061 1.061v48.81c0 .586-.475 1.061-1.06 1.061zM2.122 48.81h33.955V2.122H14.234L2.121 14.233V48.81z" fill="#E12A6C"/><path d="M13.794 14.855H1.061a1.061 1.061 0 010-2.122h11.672V1.061a1.061 1.061 0 012.122 0v12.733c0 .586-.475 1.061-1.06 1.061zM30.772 19.1H7.428a1.062 1.062 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 12.733H20.16a1.061 1.061 0 010-2.122h10.61a1.062 1.062 0 010 2.122zM30.772 25.466H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122zM30.772 31.833H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.123zM30.772 38.2H7.428a1.061 1.061 0 010-2.123h23.344a1.061 1.061 0 010 2.122zM30.772 44.566H7.428a1.062 1.062 0 010-2.122h23.344a1.061 1.061 0 010 2.122z" fill="#E12A6C"/></svg>
+                            <figcaption>
+                                <p class="caption">Work Sans <br/> <span class="caption work-light">Light,</span> <span class="caption work-medium">Medium</span> & <span class="caption work-bold">Bold</span> Weights <br/> (<span class="caption work-light">300</span>, <span class="caption work-medium">500</span>, <span class="caption work-bold">700</span>)</p>
+                            </figcaption>
+                        </figure>
+                   </div> 
+                </div>
+            </section>
+            
+            <div class="arrow">
+                <a href="#registered-font-axes">
+                  <svg class="arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
+                </a>
+            </div>
+
+            <section class="registered-variants">
+                <h2 class="body-subheadline spacer"><a name="registered-font-axes"></a>
+There are five registered variable font axes in the OpenType Design-Variation Axis Tag Registry. They're based on common stylistic properties web developers and online typographers are likely to use most often.</h2>
+    
+                <div class="full-width-body-callout-box">
+                    <h3 class="body-subsubheadline center off-the-top">Font Weight is a Registered Axis Variant</h3>               
+                        <div class="font-weight-box-two">
+                            <div class="">
+                               <h1 class="work-thin font-specimen pink">A</h1>
+                               <p class="caption work-thin">Thin Weight (100)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="work-light font-specimen pink">A</h1>
+                               <p class="caption work-light">Light Weight (300)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="work-medium font-specimen pink">A</h1>
+                               <p class="caption work-medium">Regular Weight (500)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="work-bold font-specimen pink">A</h1>
+                               <p class="caption work-bold">Bold Weight (700)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="work-heavy font-specimen pink">A</h1>
+                               <p class="caption work-heavy">Heavy Weight (900)</p>
+                            </div>
+                        </div>
+                </div>
+                
+                <ul class="registered-variant-list">
+                    <li class="registered-variant-list-item"><p class="body-copy"><strong>1. Weight</strong></p></li>
+                    <li class="registered-variant-list-item"><p class="body-copy"><strong>2. Width</strong></p></li>
+                    <li class="registered-variant-list-item"><p class="body-copy"><strong>3. Italic</strong></p></li>
+                    <li class="registered-variant-list-item"><p class="body-copy"><strong>4. Slant</strong></p></li>
+                    <li class="registered-variant-list-item"><p class="body-copy"><strong>5. Optical Size</strong></p></li>
+                </ul>
+                
+                <p class="body-copy body-copy-width">Although the semantics of each registered axis can be more easily understood via many of the other comprehensive guides to variable fonts out there, they’re each pretty straightforward. For example, we’ve already covered font weight. </p>
+    
+                <p class="body-copy body-copy-width">You also may be familiar with font width if you’ve ever encountered condensed and extended versions of fonts. The italic font variant is ubiquitous, but the slant font variant might be new to you. Slant variants essentially rely on interpolated skewing of around 8º to 12º, as opposed to the italic glyphs that are usually specifically designed by typographers.</p>
+            </section>
+
+            <div class="arrow">
+                <a href="#custom-font-axes">
+                  <svg class="arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
+                </a>
+            </div>
+
+            
+            <section class="custom-variants">
+                <h2 class="body-subheadline spacer"><a name="custom-font-axes"></a>The number of custom axis variants a variable font can have is probably unlimited, but most variable fonts I’ve encountered stick to three to five.</h2>
+    
+                <div class="full-width-body-callout-box">
+                    <h3 class="body-subsubheadline center">Example of a Custom Axis Variant</h3>               
+                        <div class="font-weight-box-two">
+                            <div class="">
+                               <h1 class="cstm-cyrillic font-specimen pink">A</h1>
+                               <p class="caption work-light">CSTM Xprmntl 03 <br /> (Cyrillic Variant)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="cstm-medium font-specimen pink">A</h1>
+                               <p class="caption work-medium">CSTM Xprmntl 03 <br /> (Medium Variant)</p>
+                            </div>
+                            <div class="">
+                               <h1 class="cstm-blackletter font-specimen pink">A</h1>
+                               <p class="caption work-bold">CSTM Xprmntl 03 <br /> (Blackletter Variant)</p>
+                            </div>
+                        </div>
+                </div>
+                
+                <p class="body-copy body-copy-width">Beyond the five registered axis variants, variable fonts can also have an unlimited number of other custom axis variants. These custom variants need to be specified by the font author, but the sky’s the limit in terms of what those variants can encompass.</p>
+
+                <p class="body-copy body-copy-width">For example, the font above, called CSTM Xprmntl 03, is a work-in-progress font that currently has a single custom axis variant. It’s the result of the CSTM Fonts foundry asking themselves the following question, “What’s happens if we interpolate Blackletter typeface with Old Cyrillic Ustav?” The result is an extremely unique font that displays a lot of breadth despite only having a single axis variant!</p>
+            </section>
+        </section>
+ 
+        <div class="arrow">
+            <a href="#what-can-be-done">
+              <svg class="arrow-hover" width="13" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.062 20a1.02 1.02 0 00.625-.246l5.152-4.849c.295-.328.417-.958.076-1.325-.336-.362-.988-.351-1.326.009L6.97 16.998V.909a.91.91 0 00-1.818 0v16.089l-3.618-3.41c-.31-.31-.985-.367-1.325-.008-.34.358-.232 1.01.075 1.325l5.152 4.849a.875.875 0 00.625.246z" fill="#018A93"/></svg>
+            </a>
+        </div>
+ 
+        
+        <section class="what-can-you-do">
+            <header class="what-can-you-do-header">
+                <h1 class="body-headline body-width"><a name="what-can-be-done"></a><span class="change">W</span>hat can <span class="change">y</span>ou do wit<span class="change">h</span> variabl<span class="change">e</span> <span class="change">f</span>onts?</h1>
+            </header>
+            
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="registered-font-axes">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Create smooth transitions using the 5 registered variable font axes.</h3>
+                        <p class="body-copy less-off-the-top">There are 5 registered font axes in the OpenType Design-Variation Axis Tag Registry are weight, width, italic, slant, optical size.</p>                   
+                    </div>
+                </a>
+ 
+                <a class="what-can-you-do-box" href="custom-font-axes">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Create unexpected effects and transitions with custom font axes.</h3>
+                        <p class="body-copy less-off-the-top">The possibilities are infinite when it comes to custom axes in variable fonts. They can even be used to animate icons and imagery!</p>                   
+                    </div>
+                </a>
+            </div>
+
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="font-interactivity">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Add seamless font interactions and animations using CSS and/or JS</h3>
+                        <p class="body-copy less-off-the-top">Beyond passive animations, variable fonts let you add complex forms of interactivity based on both simple and complex forms of input.</p>                   
+                    </div>
+                </a>
+                
+                <a class="what-can-you-do-box" href="variable-font-responsiveness">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Easier font management for responsive websites</h3>
+                        <p class="body-copy less-off-the-top">Variable fonts can improve website performance while consolidating the number of font files you have to load. This means you get smoother transitions with less loading time!</p>                   
+                    </div>
+                </a>
+            </div>
+            
+        </section>
+        
+        <section class="what-can-you-do">
+            <header class="what-can-you-do-header">
+                <h1 class="body-headline body-width"><a name="what-can-be-done"></a><span class="change">W</span>here to fin<span class="change">d</span> variabl<span class="change">e</span> font<span class="change">s</span></h1>
+            </header>
+            
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="https://fonts.google.com/?vfonly=true" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Google Fonts</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">A great resource for free fonts you can load on your website using Google Fonts' API.</p>                   
+                    </div>
+                </a>
+ 
+                <a class="what-can-you-do-box" href="https://v-fonts.com/" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">V-Fonts.com</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">This directory lists both free and paid fonts, and makes it easy to test custom text.</p>                   
+                    </div>
+                </a>
+            </div>
+
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="https://www.futurefonts.xyz/">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Future Fonts</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">This unique website provides free and paid options for fonts that are works-in-progress.</p>                   
+                    </div>
+                </a>
+                
+                <a class="what-can-you-do-box" href="https://fontesk.com/tag/variable/" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Fontesk</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">A great resource for free fonts for both commercial and personal use.</p>                   
+                    </div>
+                </a>
+            </div>
+
+            <div class="what-can-you-do-interior">
+                <a class="what-can-you-do-box" href="https://fontsarena.com/tag/variable-font/">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">Fonts Arena</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">A diverse collection of 17 variable fonts that are free for personal and commercial use.</p>                   
+                    </div>
+                </a>
+                
+                <a class="what-can-you-do-box" href="https://www.fontspace.com/category/variable" target="_blank">
+                    <div class="what-can-you-do-interior-box">
+                        <h3 class="what-can-you-do-subsubheadline">FontSpace</h3>
+                        <p class="body-copy less-off-the-top off-the-bottom">A collection of 15 variable fonts that are available free of charge for personal use.</p>                   
+                    </div>
+                </a>
+            </div>        
+
+        </section>
+
+        <section class="what-can-you-do">
+            <header class="what-can-you-do-header">
+                <h1 class="body-headline body-width"><a name="what-can-be-done"></a><span class="change">A</span>bout this <span class="change">p</span>roject</h1>
+            </header>
+            
+            <p class="body-copy body-copy-width">I presented this project on November 14, 2020 as a keynote talk for <a class="hero-headline-link" href="https://indieweb.org/2020/East" target="_blank"><strong>IndieWebCamp East 2020</strong></a>. This project features three variable typefaces: <a class="hero-headline-link" href="https://www.futurefonts.xyz/cstm/cstm-xprmntl-03" target="_blank"><strong>CSTM Xprmnt l03</strong></a> a paid font by CSTM Fonts, <a class="hero-headline-link" href="https://fonts.google.com/specimen/Space+Grotesk?vfonly=true" target="_blank"><strong>Space Grotesk</strong></a> a free font by Florian Karsten, and <a class="hero-headline-link" href="https://fonts.google.com/specimen/Work+Sans?vfonly=true" target="_blank"><strong>Work Sans</strong></a> a free font by Wei Huang. </p>
+        </section>
+
+
+	</body>
+</html>
